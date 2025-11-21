@@ -1,0 +1,32 @@
+{
+  "expo": {
+    "name": "VitalCam",
+    "slug": "vitalcam",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "resizeMode": "contain",
+      "backgroundColor": "#6366f1"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.vitalcam.app"
+    },
+    "android": {
+      "package": "com.vitalcam.app"
+    },
+    "web": {},
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera for heart rate and face vital scanning."
+        }
+      ]
+    ]
+  }
+}
