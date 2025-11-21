@@ -1,9 +1,22 @@
+import { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ScrollView, StatusBar } from 'react-native';
-import { MaterialIcons, Ionicons } from '@expo/vector-icons';
+import { MaterialCommunityIcons, Ionicons, Fontisto } from '@expo/vector-icons';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import BadgeBottomSheet from '../components/BadgeBottomSheet';
 
 export default function HomeScreen({ navigation }) {
+  const [selectedBadge, setSelectedBadge] = useState(null);
   const styles = getStyles();
+
+  const handleBadgePress = (badgeType) => {
+    console.log('Badge pressed:', badgeType);
+    setSelectedBadge(badgeType);
+  };
+
+  const handleCloseSheet = () => {
+    console.log('Closing badge sheet');
+    setSelectedBadge(null);
+  };
 
   return (
     <View style={styles.container}>
@@ -61,24 +74,36 @@ export default function HomeScreen({ navigation }) {
         {/* Trust Badges Section */}
         <View style={styles.trustSection}>
           <View style={styles.trustContainer}>
-            <View style={styles.trustBadge}>
+            <TouchableOpacity
+              style={styles.trustBadge}
+              onPress={() => handleBadgePress('fda')}
+              activeOpacity={0.7}
+            >
               <View style={[styles.badgeIconWrapper, styles.fdaBadge]}>
-                <MaterialIcons name="star" size={24} color="#8b5cf6" />
+                <MaterialCommunityIcons name="certificate" size={24} color="#8b5cf6" />
               </View>
               <Text style={styles.badgeText}>FDA{'\n'}Cleared</Text>
-            </View>
-            <View style={styles.trustBadge}>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.trustBadge}
+              onPress={() => handleBadgePress('hipaa')}
+              activeOpacity={0.7}
+            >
               <View style={[styles.badgeIconWrapper, styles.hipaaBadge]}>
                 <Ionicons name="lock-closed" size={22} color="#f97316" />
               </View>
               <Text style={styles.badgeText}>HIPAA{'\n'}Secure</Text>
-            </View>
-            <View style={styles.trustBadge}>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={styles.trustBadge}
+              onPress={() => handleBadgePress('medical')}
+              activeOpacity={0.7}
+            >
               <View style={[styles.badgeIconWrapper, styles.medicalBadge]}>
-                <Ionicons name="medical" size={22} color="#3b82f6" />
+                <MaterialCommunityIcons name="hospital-box" size={24} color="#3b82f6" />
               </View>
               <Text style={styles.badgeText}>Medical{'\n'}Grade</Text>
-            </View>
+            </TouchableOpacity>
           </View>
         </View>
 
@@ -169,7 +194,7 @@ export default function HomeScreen({ navigation }) {
 
             <View style={styles.metricsGrid}>
               <View style={[styles.metricCard, styles.heartRateCard]}>
-                <MaterialIcons name="favorite" size={32} color="#ef4444" />
+                <MaterialCommunityIcons name="heart-pulse" size={32} color="#ef4444" />
                 <Text style={styles.metricName}>Heart Rate</Text>
                 <Text style={styles.metricValue}>72 BPM • Normal</Text>
               </View>
@@ -181,7 +206,7 @@ export default function HomeScreen({ navigation }) {
               </View>
 
               <View style={[styles.metricCard, styles.stressCard]}>
-                <MaterialIcons name="layers" size={32} color="#10b981" />
+                <MaterialCommunityIcons name="spa" size={32} color="#10b981" />
                 <Text style={styles.metricName}>Stress Level</Text>
                 <Text style={styles.metricValue}>Low • Relaxed</Text>
               </View>
@@ -211,7 +236,7 @@ export default function HomeScreen({ navigation }) {
             </TouchableOpacity>
 
             <TouchableOpacity style={styles.navItem}>
-              <Ionicons name="chatbubble-outline" size={22} color="#94a3b8" />
+              <MaterialCommunityIcons name="lightbulb-on-outline" size={22} color="#94a3b8" />
               <Text style={styles.navLabel}>Insights</Text>
             </TouchableOpacity>
 
@@ -222,6 +247,13 @@ export default function HomeScreen({ navigation }) {
           </View>
         </View>
       </SafeAreaView>
+
+      {/* Badge Bottom Sheet */}
+      <BadgeBottomSheet
+        visible={selectedBadge !== null}
+        badgeType={selectedBadge}
+        onClose={handleCloseSheet}
+      />
     </View>
   );
 }
@@ -526,10 +558,12 @@ const getStyles = () => StyleSheet.create({
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    backgroundColor: 'rgba(255, 255, 255, 0.95)',
+    zIndex: 1,
+    elevation: 10,
   },
   bottomNav: {
-    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    backgroundColor: 'rgba(255, 255, 255, 0.95)',
     backdropFilter: 'blur(20px)',
     borderTopWidth: 1,
     borderTopColor: '#e2e8f0',

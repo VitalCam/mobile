@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, StatusBar, Animated } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Ionicons, MaterialIcons } from '@expo/vector-icons';
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import { useTheme } from '../context/ThemeContext';
 import AnimatedHeart from './AnimatedHeart';
 
@@ -360,7 +360,7 @@ export const HeaderStats = ({ bpm, quality }) => {
             { fontSize: 12, transform: [{ scale: pulseAnim }] }
           ]}
         >
-          <MaterialIcons name="favorite" size={12} color="#FFFFFF" /> {bpm}
+          <MaterialCommunityIcons name="heart-pulse" size={12} color="#FFFFFF" /> {bpm}
         </Animated.Text>
       )}
       {quality && (

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Animated, View } from 'react-native';
-import { MaterialIcons } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 const AnimatedHeart = ({ size = 20, color = '#FF3B30', bpm = 72 }) => {
   const scaleAnim = useRef(new Animated.Value(1)).current;
@@ -79,8 +79,8 @@ const AnimatedHeart = ({ size = 20, color = '#FF3B30', bpm = 72 }) => {
           opacity: opacityAnim,
         }}
       >
-        <MaterialIcons
-          name="favorite"
+        <MaterialCommunityIcons
+          name="heart"
           size={size}
           color={color}
         />

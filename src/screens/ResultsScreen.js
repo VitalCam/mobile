@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
-import { MaterialIcons, Ionicons, FontAwesome5 } from '@expo/vector-icons';
+import { MaterialCommunityIcons, Ionicons, FontAwesome5 } from '@expo/vector-icons';
 import {
   formatBPM,
   formatHRV,
@@ -89,7 +89,7 @@ export default function ResultsScreen({ navigation, route }) {
     return (
       <View style={styles.loadingContainer}>
         <Text style={styles.loadingText}>
-          <MaterialIcons name="search" size={20} color={theme.colors.text} /> Analyzing your scan...
+          <MaterialCommunityIcons name="cloud-search" size={20} color={theme.colors.text} /> Analyzing your scan...
         </Text>
         <Text style={styles.loadingSubtext}>Processing biometric signals</Text>
       </View>
@@ -177,7 +177,7 @@ export default function ResultsScreen({ navigation, route }) {
       {insights.length > 0 && (
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>
-            <Ionicons name="bulb" size={18} color="#FF9500" /> Health Insights
+            <MaterialCommunityIcons name="lightbulb-on" size={18} color="#FF9500" /> Health Insights
           </Text>
           {insights.map((insight, index) => (
             <InsightCard key={index} insight={insight} />
@@ -189,7 +189,7 @@ export default function ResultsScreen({ navigation, route }) {
       {recommendations.length > 0 && (
         <View style={styles.section}>
           <Text style={styles.sectionTitle}>
-            <MaterialIcons name="assignment" size={18} color="#007AFF" /> Recommendations
+            <MaterialCommunityIcons name="clipboard-check" size={18} color="#007AFF" /> Recommendations
           </Text>
           <View style={styles.recommendationsList}>
             {recommendations.map((rec, index) => (
@@ -204,7 +204,7 @@ export default function ResultsScreen({ navigation, route }) {
       {/* Technical Details */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>
-          <MaterialIcons name="settings" size={18} color="#666" /> Technical Details
+          <MaterialCommunityIcons name="cog" size={18} color="#666" /> Technical Details
         </Text>
         <View style={styles.technicalDetails}>
           <Text style={styles.technicalItem}>
@@ -226,7 +226,7 @@ export default function ResultsScreen({ navigation, route }) {
       {/* Disclaimer */}
       <View style={styles.disclaimerContainer}>
         <Text style={styles.disclaimer}>
-          <Ionicons name="warning" size={16} color="#FF9500" /> These are wellness insights for informational purposes only.
+          <MaterialCommunityIcons name="alert-circle" size={16} color="#FF9500" /> These are wellness insights for informational purposes only.
           Not intended for medical diagnosis. Consult healthcare professionals for medical concerns.
         </Text>
       </View>

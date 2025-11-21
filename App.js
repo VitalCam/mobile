@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import * as SplashScreen from 'expo-splash-screen';
 import { ThemeProvider } from './src/context/ThemeContext';
 import HomeScreen from './src/screens/HomeScreen';
@@ -43,22 +44,24 @@ export default function App() {
   }
 
   return (
-    <ThemeProvider>
-      <SafeAreaProvider onLayout={onLayoutRootView}>
-        <NavigationContainer>
-          <StatusBar style="auto" />
-          <Stack.Navigator
-            initialRouteName="Home"
-            screenOptions={{
-              headerShown: false, // Hide default navigation headers
-            }}
-          >
-            <Stack.Screen name="Home" component={HomeScreen} />
-            <Stack.Screen name="Camera" component={CameraScreen} />
-            <Stack.Screen name="Results" component={ResultsScreen} />
-          </Stack.Navigator>
-        </NavigationContainer>
-      </SafeAreaProvider>
-    </ThemeProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <ThemeProvider>
+        <SafeAreaProvider onLayout={onLayoutRootView}>
+          <NavigationContainer>
+            <StatusBar style="auto" />
+            <Stack.Navigator
+              initialRouteName="Home"
+              screenOptions={{
+                headerShown: false, // Hide default navigation headers
+              }}
+            >
+              <Stack.Screen name="Home" component={HomeScreen} />
+              <Stack.Screen name="Camera" component={CameraScreen} />
+              <Stack.Screen name="Results" component={ResultsScreen} />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </SafeAreaProvider>
+      </ThemeProvider>
+    </GestureHandlerRootView>
   );
 }
