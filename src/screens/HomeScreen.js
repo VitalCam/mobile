@@ -42,7 +42,10 @@ export default function HomeScreen({ navigation }) {
                 </View>
               </View>
               <View style={styles.headerActions}>
-                <TouchableOpacity style={styles.iconBtn}>
+                <TouchableOpacity
+                  style={styles.iconBtn}
+                  onPress={() => navigation.navigate('Notifications')}
+                >
                   <Ionicons name="notifications" size={20} color="white" />
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.iconBtn}>
@@ -230,17 +233,26 @@ export default function HomeScreen({ navigation }) {
               <Text style={[styles.navLabel, styles.activeNavLabel]}>Home</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.navItem}>
+            <TouchableOpacity
+              style={styles.navItem}
+              onPress={() => navigation.navigate('History')}
+            >
               <Ionicons name="calendar-outline" size={22} color="#94a3b8" />
               <Text style={styles.navLabel}>History</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.navItem}>
+            <TouchableOpacity
+              style={styles.navItem}
+              onPress={() => navigation.navigate('Insights')}
+            >
               <MaterialCommunityIcons name="lightbulb-on-outline" size={22} color="#94a3b8" />
               <Text style={styles.navLabel}>Insights</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.navItem}>
+            <TouchableOpacity
+              style={styles.navItem}
+              onPress={() => navigation.navigate('Profile')}
+            >
               <Ionicons name="person-outline" size={22} color="#94a3b8" />
               <Text style={styles.navLabel}>Profile</Text>
             </TouchableOpacity>

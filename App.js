@@ -9,6 +9,10 @@ import { ThemeProvider } from './src/context/ThemeContext';
 import HomeScreen from './src/screens/HomeScreen';
 import CameraScreen from './src/screens/CameraScreen';
 import ResultsScreen from './src/screens/ResultsScreen';
+import HistoryScreen from './src/screens/HistoryScreen';
+import InsightsScreen from './src/screens/InsightsScreen';
+import ProfileScreen from './src/screens/ProfileScreen';
+import NotificationsScreen from './src/screens/NotificationsScreen';
 
 const Stack = createStackNavigator();
 
@@ -58,6 +62,10 @@ export default function App() {
               <Stack.Screen name="Home" component={HomeScreen} />
               <Stack.Screen name="Camera" component={CameraScreen} />
               <Stack.Screen name="Results" component={ResultsScreen} />
+              <Stack.Screen name="History" component={HistoryScreen} />
+              <Stack.Screen name="Insights" component={InsightsScreen} />
+              <Stack.Screen name="Profile" component={ProfileScreen} />
+              <Stack.Screen name="Notifications" component={NotificationsScreen} />
             </Stack.Navigator>
           </NavigationContainer>
         </SafeAreaProvider>
