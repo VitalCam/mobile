@@ -238,39 +238,6 @@ export default function InsightsScreen({ navigation }) {
           ))}
         </View>
       </ScrollView>
-
-      {/* Bottom Navigation */}
-      <SafeAreaView edges={['bottom']} style={styles.bottomNavSafeArea}>
-        <View style={styles.bottomNav}>
-          <View style={styles.navContainer}>
-            <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('Home')}>
-              <Ionicons name="home-outline" size={22} color="#94a3b8" />
-              <Text style={styles.navLabel}>Home</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={styles.navItem}
-              onPress={() => navigation.navigate('History')}
-            >
-              <Ionicons name="calendar-outline" size={22} color="#94a3b8" />
-              <Text style={styles.navLabel}>History</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity style={[styles.navItem, styles.activeNavItem]}>
-              <MaterialCommunityIcons name="lightbulb-on" size={22} color="white" />
-              <Text style={[styles.navLabel, styles.activeNavLabel]}>Insights</Text>
-            </TouchableOpacity>
-
-            <TouchableOpacity
-              style={styles.navItem}
-              onPress={() => navigation.navigate('Profile')}
-            >
-              <Ionicons name="person-outline" size={22} color="#94a3b8" />
-              <Text style={styles.navLabel}>Profile</Text>
-            </TouchableOpacity>
-          </View>
-        </View>
-      </SafeAreaView>
     </View>
   );
 }
@@ -542,47 +509,5 @@ const getStyles = () =>
       fontSize: 13,
       color: '#64748b',
       lineHeight: 20,
-    },
-
-    // Bottom Navigation
-    bottomNavSafeArea: {
-      position: 'absolute',
-      bottom: 0,
-      left: 0,
-      right: 0,
-      backgroundColor: 'rgba(255, 255, 255, 0.95)',
-      zIndex: 1,
-      elevation: 10,
-    },
-    bottomNav: {
-      backgroundColor: 'rgba(255, 255, 255, 0.95)',
-      backdropFilter: 'blur(20px)',
-      borderTopWidth: 1,
-      borderTopColor: '#e2e8f0',
-      paddingTop: 12,
-      paddingHorizontal: 24,
-    },
-    navContainer: {
-      flexDirection: 'row',
-      justifyContent: 'space-around',
-      alignItems: 'center',
-    },
-    navItem: {
-      alignItems: 'center',
-      padding: 8,
-      borderRadius: 12,
-      minWidth: 60,
-    },
-    activeNavItem: {
-      backgroundColor: '#6366f1',
-    },
-    navLabel: {
-      fontSize: 11,
-      fontWeight: '600',
-      marginTop: 2,
-      color: '#94a3b8',
-    },
-    activeNavLabel: {
-      color: 'white',
     },
   });

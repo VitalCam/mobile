@@ -1,6 +1,7 @@
 import React, { useEffect, useCallback } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { StatusBar } from 'expo-status-bar';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
@@ -13,11 +14,30 @@ import HistoryScreen from './src/screens/HistoryScreen';
 import InsightsScreen from './src/screens/InsightsScreen';
 import ProfileScreen from './src/screens/ProfileScreen';
 import NotificationsScreen from './src/screens/NotificationsScreen';
+import CustomTabBar from './src/components/CustomTabBar';
 
 const Stack = createStackNavigator();
+const Tab = createBottomTabNavigator();
 
 // Keep the splash screen visible while we prepare the app
 SplashScreen.preventAutoHideAsync();
+
+// Bottom Tab Navigator for main screens
+function MainTabs() {
+  return (
+    <Tab.Navigator
+      tabBar={(props) => <CustomTabBar {...props} />}
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="History" component={HistoryScreen} />
+      <Tab.Screen name="Insights" component={InsightsScreen} />
+      <Tab.Screen name="Profile" component={ProfileScreen} />
+    </Tab.Navigator>
+  );
+}
 
 export default function App() {
   const [appIsReady, setAppIsReady] = React.useState(false);
@@ -54,17 +74,15 @@ export default function App() {
           <NavigationContainer>
             <StatusBar style="auto" />
             <Stack.Navigator
-              initialRouteName="Home"
+              initialRouteName="MainTabs"
               screenOptions={{
-                headerShown: false, // Hide default navigation headers
+                headerShown: false,
+                presentation: 'card',
               }}
             >
-              <Stack.Screen name="Home" component={HomeScreen} />
+              <Stack.Screen name="MainTabs" component={MainTabs} />
               <Stack.Screen name="Camera" component={CameraScreen} />
               <Stack.Screen name="Results" component={ResultsScreen} />
-              <Stack.Screen name="History" component={HistoryScreen} />
-              <Stack.Screen name="Insights" component={InsightsScreen} />
-              <Stack.Screen name="Profile" component={ProfileScreen} />
               <Stack.Screen name="Notifications" component={NotificationsScreen} />
             </Stack.Navigator>
           </NavigationContainer>
